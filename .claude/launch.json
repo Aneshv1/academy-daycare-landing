@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "academy-daycare-dev",
+      "runtimeExecutable": "/usr/local/bin/node",
+      "runtimeArgs": ["node_modules/.bin/astro", "dev", "--host"],
+      "port": 4322,
+      "cwd": "/Users/anesh/Desktop/Wesbites/academy-daycare-landing"
+    }
+  ]
+}
