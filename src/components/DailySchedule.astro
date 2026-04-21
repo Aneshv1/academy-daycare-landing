@@ -1,0 +1,229 @@
+---
+const daycareSchedule = [
+  { time: '7:00 AM', activity: 'Drop-off & check-in', desc: 'Health check, settle into play group' },
+  { time: '7:30 AM', activity: 'Morning free play', desc: 'Structured play with matched temperament groups' },
+  { time: '9:30 AM', activity: 'Outdoor yard time', desc: 'Fresh air, potty break, supervised exercise' },
+  { time: '10:30 AM', activity: 'Rest & water break', desc: 'Quiet time in dedicated rest zones' },
+  { time: '11:00 AM', activity: 'Social play session', desc: 'Structured group activities & socialization' },
+];
+
+const daycareHidden = [
+  { time: '12:00 PM', activity: 'Lunch & digestion rest', desc: '90-minute rest after meals for safe digestion' },
+  { time: '1:30 PM', activity: 'Afternoon play rotation', desc: 'New play group combinations, enrichment' },
+  { time: '3:00 PM', activity: 'Outdoor yard session', desc: 'Exercise and fresh air' },
+  { time: '4:00 PM', activity: 'Cool-down & settle', desc: 'Place cot practice, calm activities' },
+  { time: '5:00–8:00 PM', activity: 'Pickup window', desc: 'Report card on your dog\'s day' },
+];
+
+const dayTrainSchedule = [
+  { time: '7:00 AM', activity: 'Drop-off & check-in', desc: 'Health check, morning assessment' },
+  { time: '7:30 AM', activity: '1-on-1 training session', desc: 'Commands, markers, leash work with trainer' },
+  { time: '9:00 AM', activity: 'Treadmill fitness', desc: 'Controlled exercise for focus & energy management' },
+  { time: '9:45 AM', activity: 'Social play session', desc: 'Structured play with matched temperament groups' },
+  { time: '10:30 AM', activity: 'Place cot training', desc: 'Calm-on-command, impulse control practice' },
+];
+
+const dayTrainHidden = [
+  { time: '11:30 AM', activity: '2nd training session', desc: 'Reinforcement, real-world distraction work' },
+  { time: '12:30 PM', activity: 'Lunch & digestion rest', desc: '90-minute rest period' },
+  { time: '2:00 PM', activity: 'Afternoon play rotation', desc: 'Socialization with daycare groups' },
+  { time: '3:00 PM', activity: 'Outdoor leash work', desc: 'Loose leash walking practice in the yard' },
+  { time: '4:00 PM', activity: 'Cool-down & settle', desc: 'Final place cot session, decompression' },
+  { time: '5:00–8:00 PM', activity: 'Pickup window', desc: 'Training progress update from your trainer' },
+];
+---
+
+<section id="schedule" class="py-20 sm:py-24 bg-brand-dark">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Header -->
+    <div class="text-center max-w-3xl mx-auto mb-16">
+      <span class="inline-block text-academy-teal text-sm font-semibold uppercase tracking-wider mb-3">What a Day Looks Like</span>
+      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4">
+        A Day at Academy
+      </h2>
+      <p class="text-lg text-neutral-400">
+        Structure, play, rest, repeat. Here's exactly what your dog's day looks like — no guessing.
+      </p>
+    </div>
+
+    <!-- Two columns: Daycare + Day & Train -->
+    <div class="grid lg:grid-cols-2 gap-8 mb-12">
+
+      <!-- Daycare Schedule -->
+      <div class="bg-neutral-50 rounded-2xl border border-neutral-200 overflow-hidden">
+        <div class="bg-academy-teal px-6 py-4">
+          <h3 class="text-lg font-bold text-white">Daycare</h3>
+          <p class="text-sm text-white/70">Structured play & socialization</p>
+        </div>
+        <div class="p-6">
+          <div class="space-y-4">
+            {daycareSchedule.map((item) => (
+              <div class="flex gap-4">
+                <div class="w-20 flex-shrink-0">
+                  <span class="text-sm font-bold text-academy-teal">{item.time}</span>
+                </div>
+                <div class="flex-1 pb-4 border-b border-neutral-100 last:border-0">
+                  <p class="text-sm font-semibold text-brand-charcoal">{item.activity}</p>
+                  <p class="text-xs text-neutral-500 mt-0.5">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Blurred teaser -->
+          <div class="relative mt-4">
+            <div class="space-y-4 blur-sm select-none pointer-events-none" aria-hidden="true">
+              {daycareHidden.slice(0, 3).map((item) => (
+                <div class="flex gap-4">
+                  <div class="w-20 flex-shrink-0">
+                    <span class="text-sm font-bold text-academy-teal">{item.time}</span>
+                  </div>
+                  <div class="flex-1 pb-4 border-b border-neutral-100">
+                    <p class="text-sm font-semibold text-brand-charcoal">{item.activity}</p>
+                    <p class="text-xs text-neutral-500 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/70 to-white"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Day & Train Schedule -->
+      <div class="bg-neutral-50 rounded-2xl border border-neutral-200 overflow-hidden">
+        <div class="bg-brand-charcoal px-6 py-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-lg font-bold text-white">Day & Train</h3>
+              <p class="text-sm text-neutral-400">Training + daycare combined</p>
+            </div>
+            <span class="px-3 py-1 bg-academy-teal text-white text-xs font-bold rounded-full">Most Popular</span>
+          </div>
+        </div>
+        <div class="p-6">
+          <div class="space-y-4">
+            {dayTrainSchedule.map((item) => (
+              <div class="flex gap-4">
+                <div class="w-20 flex-shrink-0">
+                  <span class="text-sm font-bold text-academy-teal">{item.time}</span>
+                </div>
+                <div class="flex-1 pb-4 border-b border-neutral-100 last:border-0">
+                  <p class="text-sm font-semibold text-brand-charcoal">{item.activity}</p>
+                  <p class="text-xs text-neutral-500 mt-0.5">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Blurred teaser -->
+          <div class="relative mt-4">
+            <div class="space-y-4 blur-sm select-none pointer-events-none" aria-hidden="true">
+              {dayTrainHidden.slice(0, 3).map((item) => (
+                <div class="flex gap-4">
+                  <div class="w-20 flex-shrink-0">
+                    <span class="text-sm font-bold text-academy-teal">{item.time}</span>
+                  </div>
+                  <div class="flex-1 pb-4 border-b border-neutral-100">
+                    <p class="text-sm font-semibold text-brand-charcoal">{item.activity}</p>
+                    <p class="text-xs text-neutral-500 mt-0.5">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent via-white/70 to-white"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Email Gate -->
+    <div class="max-w-xl mx-auto">
+      <div class="bg-brand-charcoal rounded-2xl p-8 text-center border border-white/5">
+        <div class="w-14 h-14 bg-academy-teal/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-academy-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Get the Full Daily Schedule</h3>
+        <p class="text-sm text-neutral-400 mb-6 leading-relaxed">
+          Full hour-by-hour breakdown for both programs, plus what to bring on day one and drop-off tips. Sent straight to your inbox.
+        </p>
+
+        <form id="schedule-form" class="space-y-3">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <input type="text" name="name" required placeholder="Your name"
+              class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm" />
+            <input type="email" name="email" required placeholder="Your email"
+              class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm" />
+          </div>
+          <button type="submit" id="schedule-submit-btn"
+            class="w-full px-6 py-3 bg-academy-teal text-white text-sm font-bold rounded-lg hover:bg-academy-teal-dark transition-all shadow-lg shadow-academy-teal/25">
+            Send Me the Full Schedule
+          </button>
+        </form>
+
+        <div id="schedule-success" class="hidden py-4">
+          <div class="w-12 h-12 bg-academy-teal/20 rounded-full flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-academy-teal" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
+            </svg>
+          </div>
+          <p class="text-white font-semibold">Check your inbox!</p>
+          <p class="text-sm text-neutral-400 mt-1">The full daily schedule is on its way.</p>
+        </div>
+
+        <p class="text-xs text-neutral-600 mt-4">Or <a href="#contact" class="text-academy-teal hover:underline">skip straight to booking an assessment</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const scheduleForm = document.getElementById('schedule-form') as HTMLFormElement;
+  const scheduleBtn = document.getElementById('schedule-submit-btn') as HTMLButtonElement;
+  const scheduleSuccess = document.getElementById('schedule-success') as HTMLDivElement;
+
+  scheduleForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    scheduleBtn.disabled = true;
+    scheduleBtn.textContent = 'Sending...';
+
+    const formData = new FormData(scheduleForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          owner_name: data.name,
+          email: data.email,
+          service: 'schedule-download',
+          message: 'Requested full daily schedule',
+          source: 'schedule-gate',
+        }),
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
+      // Push to Klaviyo
+      const _learnq = (window as any)._learnq || [];
+      _learnq.push(['identify', {
+        '$email': data.email,
+        '$first_name': (data.name as string).split(' ')[0],
+        'Source': 'Schedule Download',
+      }]);
+      _learnq.push(['track', 'Schedule Downloaded', {
+        'Source': 'Academy Daycare Landing Page',
+      }]);
+
+      scheduleForm.classList.add('hidden');
+      scheduleSuccess.classList.remove('hidden');
+    } catch (err) {
+      scheduleBtn.disabled = false;
+      scheduleBtn.textContent = 'Send Me the Full Schedule';
+      alert('Something went wrong. Please try again or call us at 437-776-9563.');
+    }
+  });
+</script>

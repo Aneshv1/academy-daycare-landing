@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://academydaycare.ca/sitemap-index.xml

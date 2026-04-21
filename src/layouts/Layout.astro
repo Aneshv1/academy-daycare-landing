@@ -2,9 +2,104 @@
 interface Props {
   title: string;
   description?: string;
+  canonical?: string;
 }
 
-const { title, description = "Toronto's premier dog daycare, training & boarding facility. 8,500 sq ft, 15 years, perfect safety record. Assessment-based enrollment." } = Astro.props;
+const {
+  title,
+  description = "Toronto's premier dog daycare, training & boarding facility. 8,500 sq ft, 15 years, perfect safety record. Assessment-based enrollment in Gormley, ON.",
+  canonical = "https://academydaycare.ca"
+} = Astro.props;
+
+const ogImage = `${canonical}/og-image.jpg`;
+
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Academy Daycare",
+  "description": description,
+  "url": canonical,
+  "telephone": "+1-437-776-9563",
+  "email": "contact@academydaycare.ca",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "22 Cardico Dr",
+    "addressLocality": "Gormley",
+    "addressRegion": "ON",
+    "addressCountry": "CA"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 44.0000,
+    "longitude": -79.3700
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "07:00",
+      "closes": "20:00"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "250",
+    "bestRating": "5"
+  },
+  "priceRange": "$$",
+  "image": ogImage,
+  "sameAs": [
+    "https://www.instagram.com/k9academyto"
+  ]
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the requirements for enrollment at Academy Daycare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dogs must be at least 16 weeks old and have their rabies vaccination. All dogs require an in-person assessment with our trainers before being approved for enrollment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can intact (unspayed/unneutered) dogs attend Academy Daycare?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Intact dogs are only permitted in our Day & Train program, where they receive individualized attention and are managed by our trainers throughout the day. They cannot attend regular daycare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do you keep dogs safe at your facility?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Safety is our top priority. Every dog is assessed in person before joining. In 15 years of socializing dogs of every breed and temperament, we have maintained a perfect safety record."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "My dog is nervous around other dogs — can they still attend?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Absolutely. We specialize in working with nervous dogs. Our staff carefully match them with compatible, calm playmates. We recommend attending 3-5 days per week during the first few months for consistent exposure and faster confidence building."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What are your hours and how often should my dog attend?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We are open Monday through Friday, 7:00 AM to 8:00 PM. For best results we recommend 3-5 days per week for at least the first few months."
+      }
+    }
+  ]
+};
 ---
 
 <!doctype html>
@@ -13,16 +108,39 @@ const { title, description = "Toronto's premier dog daycare, training & boarding
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href="/logo-icon.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Academy Daycare" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <title>{title}</title>
 
+    <!-- JSON-LD: LocalBusiness -->
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
+
+    <!-- JSON-LD: FAQPage -->
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
     <!-- Klaviyo -->
     <script async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Y8jyJQ"></script>
 
-    <!-- Google Analytics (replace UA-XXXXX with real ID) -->
+    <!-- Google Analytics (replace with real ID) -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
 
     <!-- Microsoft Clarity (replace with real ID) -->
