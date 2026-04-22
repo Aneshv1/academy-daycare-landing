@@ -286,7 +286,40 @@ const faqs = [
         </div>
       </div>
 
-      <p class="text-center text-sm text-neutral-400 mt-6">Pricing for add-ons available at check-in. <a href="#contact" class="text-academy-teal hover:underline">Ask us for details.</a></p>
+      <p class="text-center text-sm text-neutral-400 mt-6 mb-10">Pricing for add-ons available at check-in. <a href="#contact" class="text-academy-teal hover:underline">Ask us for details.</a></p>
+
+      <!-- Download Curriculum CTA -->
+      <div class="max-w-xl mx-auto bg-brand-charcoal rounded-2xl p-8 text-center border border-white/5">
+        <div class="w-14 h-14 bg-academy-teal/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+          <svg class="w-7 h-7 text-academy-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+          </svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">Download the Full Daycare Curriculum</h3>
+        <p class="text-sm text-neutral-400 mb-6 leading-relaxed">
+          See exactly what your dog's day includes — activities, enrichment, schedule, and add-on details. Sent straight to your inbox.
+        </p>
+        <form id="curriculum-form" class="space-y-3">
+          <div class="grid sm:grid-cols-2 gap-3">
+            <input type="text" name="name" required placeholder="Your name"
+              class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm" />
+            <input type="email" name="email" required placeholder="Your email"
+              class="w-full px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm" />
+          </div>
+          <button type="submit" id="curriculum-submit-btn"
+            class="w-full px-6 py-3 bg-academy-teal text-white text-sm font-bold rounded-lg hover:bg-academy-teal-dark transition-all shadow-lg shadow-academy-teal/25">
+            Download Curriculum
+          </button>
+        </form>
+        <div id="curriculum-success" class="hidden py-4">
+          <div class="w-12 h-12 bg-academy-teal/20 rounded-full flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-academy-teal" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" /></svg>
+          </div>
+          <p class="text-white font-semibold">Check your inbox!</p>
+          <p class="text-sm text-neutral-400 mt-1">The full curriculum is on its way.</p>
+        </div>
+        <p class="text-xs text-neutral-600 mt-4">Or <a href="#contact" class="text-academy-teal hover:underline">skip straight to booking an assessment</a></p>
+      </div>
     </div>
   </section>
 
@@ -370,3 +403,52 @@ const faqs = [
   <ContactForm />
   <Footer />
 </Layout>
+
+<script>
+  const currForm = document.getElementById('curriculum-form') as HTMLFormElement;
+  const currBtn = document.getElementById('curriculum-submit-btn') as HTMLButtonElement;
+  const currSuccess = document.getElementById('curriculum-success') as HTMLDivElement;
+
+  currForm?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    currBtn.disabled = true;
+    currBtn.textContent = 'Sending...';
+
+    const formData = new FormData(currForm);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          owner_name: data.name,
+          email: data.email,
+          service: 'curriculum-download',
+          message: 'Requested daycare curriculum',
+          source: 'curriculum-gate',
+        }),
+      });
+
+      if (!res.ok) throw new Error('Submission failed');
+
+      const _learnq = (window as any)._learnq || [];
+      _learnq.push(['identify', {
+        '$email': data.email,
+        '$first_name': (data.name as string).split(' ')[0],
+        'Source': 'Curriculum Download',
+      }]);
+      _learnq.push(['track', 'Curriculum Download', {
+        'Program': 'Daycare',
+        'Source': 'Academy Daycare Landing Page',
+      }]);
+
+      currForm.classList.add('hidden');
+      currSuccess.classList.remove('hidden');
+    } catch (err) {
+      currBtn.disabled = false;
+      currBtn.textContent = 'Download Curriculum';
+      alert('Something went wrong. Please try again or call us at 437-776-9563.');
+    }
+  });
+</script>
