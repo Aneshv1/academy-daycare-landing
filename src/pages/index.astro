@@ -5,13 +5,6 @@ import Hero from '../components/Hero.astro';
 import PainSection from '../components/PainSection.astro';
 import Programs from '../components/Programs.astro';
 import Testimonials from '../components/Testimonials.astro';
-import DayAndTrain from '../components/DayAndTrain.astro';
-import HowItWorks from '../components/HowItWorks.astro';
-import Facility from '../components/Facility.astro';
-import WhyUs from '../components/WhyUs.astro';
-import Requirements from '../components/Requirements.astro';
-import DailySchedule from '../components/DailySchedule.astro';
-import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
@@ -23,14 +16,75 @@ import Footer from '../components/Footer.astro';
   <PainSection />
   <Programs />
   <Testimonials />
-  <DayAndTrain />
-  <HowItWorks />
-  <Facility />
-  <WhyUs />
-  <DailySchedule />
-  <Requirements />
-  <FAQ />
+
+  <!-- Curriculum Download — slim lead capture -->
+  <section class="py-12 sm:py-16 bg-brand-dark">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 bg-brand-charcoal rounded-2xl p-6 sm:p-8 border border-white/5">
+        <div class="flex-1 text-center md:text-left">
+          <h3 class="text-lg font-bold text-white mb-1">Download Our Full Curriculum</h3>
+          <p class="text-sm text-neutral-400">Daily schedules, activities, add-ons, and what to bring on day one — sent to your inbox.</p>
+        </div>
+        <form id="homepage-curriculum-form" class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+          <input type="text" name="name" required placeholder="Name"
+            class="px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm w-full sm:w-36" />
+          <input type="email" name="email" required placeholder="Email"
+            class="px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm w-full sm:w-44" />
+          <button type="submit" id="homepage-curriculum-btn"
+            class="px-6 py-3 bg-academy-teal text-white text-sm font-bold rounded-lg hover:bg-academy-teal-dark transition-all whitespace-nowrap">
+            Send It
+          </button>
+        </form>
+        <div id="homepage-curriculum-success" class="hidden text-center md:text-left">
+          <p class="text-academy-teal font-semibold text-sm">Check your inbox!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <CTA />
   <ContactForm />
   <Footer />
 </Layout>
+
+<script>
+  const form = document.getElementById('homepage-curriculum-form') as HTMLFormElement;
+  const btn = document.getElementById('homepage-curriculum-btn') as HTMLButtonElement;
+  const success = document.getElementById('homepage-curriculum-success') as HTMLDivElement;
+
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const res = await fetch('/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          owner_name: data.name,
+          email: data.email,
+          service: 'curriculum-download',
+          message: 'Requested curriculum from homepage',
+          source: 'homepage-curriculum',
+        }),
+      });
+
+      if (!res.ok) throw new Error('Failed');
+
+      const _learnq = (window as any)._learnq || [];
+      _learnq.push(['identify', { '$email': data.email, '$first_name': (data.name as string).split(' ')[0], 'Source': 'Homepage Curriculum' }]);
+      _learnq.push(['track', 'Curriculum Download', { Source: 'Homepage' }]);
+
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+    } catch {
+      btn.disabled = false;
+      btn.textContent = 'Send It';
+      alert('Something went wrong. Please try again or call 437-776-9563.');
+    }
+  });
+</script>
