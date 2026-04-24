@@ -5,16 +5,16 @@ import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
 
 const daycareSchedule = [
-  { time: '7:00 AM', activity: 'Drop-off & check-in', desc: 'Health check, settle into play group' },
+  { time: '7:00–10:00 AM', activity: 'Drop-off & check-in', desc: 'Health check, settle into play group' },
   { time: '7:30 AM', activity: 'Morning free play', desc: 'Structured play with matched temperament groups' },
   { time: '9:30 AM', activity: 'Outdoor yard time', desc: 'Fresh air, potty break, supervised exercise' },
   { time: '10:30 AM', activity: 'Rest & water break', desc: 'Quiet time in dedicated rest zones' },
   { time: '11:00 AM', activity: 'Social play session', desc: 'Structured group activities & socialization' },
-  { time: '12:00 PM', activity: 'Lunch & digestion rest', desc: '90-minute rest after meals for safe digestion' },
+  { time: '12:00 PM', activity: 'Lunch & digestion rest', desc: 'Puppy lunch if provided by owner. 90-minute mandatory rest for safe digestion' },
   { time: '1:30 PM', activity: 'Afternoon play rotation', desc: 'New play group combinations, enrichment' },
   { time: '3:00 PM', activity: 'Outdoor yard session', desc: 'Exercise and fresh air' },
-  { time: '4:00 PM', activity: 'Cool-down & settle', desc: 'Place cot practice, calm activities' },
-  { time: '5:00–8:00 PM', activity: 'Pickup window', desc: 'Report card on your dog\'s day' },
+  { time: '4:00 PM', activity: 'Cool-down & settle', desc: 'Calm activities, winding down before pickup' },
+  { time: '3:00–8:00 PM', activity: 'Pickup window', desc: 'Weekly report card on your dog\'s progress' },
 ];
 
 const testimonials = [
@@ -36,10 +36,10 @@ const testimonials = [
 ];
 
 const faqs = [
-  { q: 'What are the requirements for daycare?', a: 'Dogs must be at least 16 weeks old, have their rabies vaccination, and be spayed/neutered. No lengthy assessment process — we have 15 years of experience and can handle any dog.' },
-  { q: 'Can intact dogs attend daycare?', a: 'Intact dogs cannot attend regular daycare but are welcome in our Day & Train program where they receive individualized attention.' },
+  { q: 'What are the requirements for daycare?', a: 'Dogs must be at least 16 weeks old with current rabies, bordetella, and DHPP vaccinations. Spay/neuter is strongly recommended but not required. No lengthy assessment process — we can handle any dog.' },
+  { q: 'Can intact dogs attend daycare?', a: 'Spay/neuter is strongly recommended. Intact males over 1 year struggle in group settings — they tend to mark, mount, and become territorial. We recommend our Day & Train program for intact dogs where they get hands-on management.' },
   { q: 'How often should my dog attend?', a: 'For best results — especially for new or nervous dogs — we recommend 3–5 days per week for at least the first few months to build routine and confidence.' },
-  { q: 'What happens during a typical day?', a: 'Dogs rotate through structured play sessions, outdoor yard time, rest periods, and socialization — all supervised by our behaviour specialists. See the full schedule above.' },
+  { q: 'What happens during a typical day?', a: 'Dogs rotate through structured play sessions, outdoor yard time, rest periods, and socialization — all supervised by our behaviour specialists. You\'ll receive a weekly report card on their progress. See the full schedule above.' },
   { q: 'What is behavioural daycare?', a: 'Behavioural daycare is for dogs that need extra support — reactive, nervous, or high-energy dogs that require more hands-on management and smaller group sizes. Our trainers actively work with these dogs throughout the day.' },
   { q: 'My dog is nervous — will daycare help?', a: 'Absolutely. We match nervous dogs with calm, compatible playmates and recommend consistent attendance (3–5 days/week) to build lasting confidence in a safe environment.' },
 ];
@@ -251,6 +251,14 @@ const faqs = [
           </div>
           <h4 class="font-bold text-brand-charcoal text-sm mb-1">Brush</h4>
           <p class="text-xs text-neutral-500">Coat brushing and grooming</p>
+        </div>
+
+        <div class="bg-neutral-50 rounded-xl border border-neutral-200 p-5 text-center">
+          <div class="w-10 h-10 bg-academy-teal/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+            <svg class="w-5 h-5 text-academy-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" /></svg>
+          </div>
+          <h4 class="font-bold text-brand-charcoal text-sm mb-1">Walking</h4>
+          <p class="text-xs text-neutral-500">Structured leash walk</p>
         </div>
 
         <div class="bg-neutral-50 rounded-xl border border-neutral-200 p-5 text-center">
