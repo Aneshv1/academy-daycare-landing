@@ -180,7 +180,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    return new Response(JSON.stringify({ success: true, supabase: supabaseOk, email: emailOk, klaviyo: klaviyoOk, emailDebug: emailOk ? undefined : emailResult }), {
+    return new Response(JSON.stringify({ success: true, supabase: supabaseOk, email: emailOk, klaviyo: klaviyoOk }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
