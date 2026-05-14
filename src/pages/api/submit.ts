@@ -48,6 +48,7 @@ export const POST: APIRoute = async ({ request }) => {
     const resendKey = import.meta.env.RESEND_API_KEY;
     const notifyFrom = import.meta.env.NOTIFY_FROM || 'Leads <leads@academydaycare.ca>';
     const notifyTo = import.meta.env.NOTIFY_TO || 'hello@academydaycare.ca';
+    let emailResult: any = null;
 
     if (resendKey) {
       try {
@@ -70,7 +71,7 @@ export const POST: APIRoute = async ({ request }) => {
           <p style="font-family:sans-serif;font-size:12px;color:#999;margin-top:16px">Reply to this email to respond directly to the lead.</p>
         `;
 
-        await fetch('https://api.resend.com/emails', {
+        const emailRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${resendKey}`,
@@ -84,7 +85,12 @@ export const POST: APIRoute = async ({ request }) => {
             html: htmlBody,
           }),
         });
-        emailOk = true;
+        const emailResult = await emailRes.json();
+        if (emailRes.ok) {
+          emailOk = true;
+        } else {
+          console.error('Resend API error:', JSON.stringify(emailResult));
+        }
       } catch (e) {
         console.error('Resend error:', e);
       }
@@ -174,7 +180,7 @@ export const POST: APIRoute = async ({ request }) => {
       }
     }
 
-    return new Response(JSON.stringify({ success: true, supabase: supabaseOk, email: emailOk, klaviyo: klaviyoOk }), {
+    return new Response(JSON.stringify({ success: true, supabase: supabaseOk, email: emailOk, klaviyo: klaviyoOk, emailDebug: emailOk ? undefined : emailResult }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
