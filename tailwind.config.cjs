@@ -5,9 +5,9 @@ module.exports = {
     extend: {
       colors: {
         academy: {
-          teal: '#0D9488',
-          'teal-dark': '#0F766E',
-          'teal-light': '#F0FDFA',
+          teal: '#e8782a',
+          'teal-dark': '#d06520',
+          'teal-light': '#FFF7ED',
           gold: '#D97706',
           'gold-dark': '#B45309',
           'gold-light': '#FFFBEB',
