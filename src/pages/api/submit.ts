@@ -47,7 +47,7 @@ export const POST: APIRoute = async ({ request }) => {
     // 2. Resend — notify team
     const resendKey = import.meta.env.RESEND_API_KEY;
     const notifyFrom = import.meta.env.NOTIFY_FROM || 'Leads <leads@academydaycare.ca>';
-    const notifyTo = import.meta.env.NOTIFY_TO || 'contact@academydaycare.ca';
+    const notifyTo = import.meta.env.NOTIFY_TO || 'hello@academydaycare.ca';
 
     if (resendKey) {
       try {
