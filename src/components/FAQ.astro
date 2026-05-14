@@ -1,4 +1,62 @@
 ---
+const faqs = [
+  {
+    q: "What if my dog is aggressive or reactive?",
+    a: "We can handle it. Our team are canine behaviour specialists with 15 years of experience rehabilitating and socializing dogs of every temperament — reactive, nervous, aggressive, high-energy, kicked out of other facilities. We've seen it all. During your phone assessment we'll learn about your dog's specific challenges and recommend the right program."
+  },
+  {
+    q: "How much does it cost?",
+    a: "Standard Daycare starts at $55/day with multi-day packs as low as $47/day. Day & Train starts at $95/day (training + full daycare included). Boarding is $75/night for 1–6 nights, or $65/night for stays of 7+ nights. Full pricing and package details are on each program page."
+  },
+  {
+    q: "What are the requirements for enrollment?",
+    a: "Dogs must be at least 16 weeks old with current rabies, bordetella, and DHPP vaccinations. No registration fees — just fill out the form and we'll set up your phone assessment."
+  },
+  {
+    q: "Can intact (unspayed/unneutered) dogs attend?",
+    a: "Spay/neuter is strongly recommended but not required. Intact males over 1 year tend to struggle in group daycare — they become territorial, mark obsessively, and fixate on females. For intact dogs, we recommend our Day & Train program where they receive individualized trainer management."
+  },
+  {
+    q: "My dog is nervous around other dogs — can they still attend?",
+    a: "Absolutely. We specialize in working with nervous dogs. Our staff carefully match them with compatible, calm playmates and manage every introduction. For nervous dogs, we recommend attending 3–5 days per week during the first few months for consistent exposure and faster confidence building."
+  },
+  {
+    q: "What's the phone assessment like?",
+    a: "It's a quick 10–15 minute call. We'll ask about your dog's temperament, energy level, any behavioural concerns, and what you're looking for. From there we recommend the right program and book your start date. No pressure, no sales pitch."
+  },
+  {
+    q: "What do I need to bring on the first day?",
+    a: "For daycare — nothing. Just your dog. We provide everything. For boarding — just your dog and their food. That's it."
+  },
+  {
+    q: "What are your hours?",
+    a: "Monday through Friday. Drop-off is 7:00–10:00 AM, pickup is 3:00–8:00 PM. Closed weekends. A $30 late fee applies for pickups after 8:00 PM."
+  },
+  {
+    q: "How do you keep dogs safe?",
+    a: "Safety is built into everything we do. Dogs are separated by temperament and energy level. Our staff are trained to read body language and intervene before problems start. All staff are first-aid trained with direct contact to nearby emergency veterinary clinics. In 15 years we have maintained a perfect safety record with zero incidents."
+  },
+  {
+    q: "How often should my dog attend?",
+    a: "Whatever works for your schedule. Dogs do best with at least 2 days per week — consistency helps build routine and confidence. Some clients do 2–3 days, others do 5. We'll help you figure out what makes sense during your phone assessment."
+  },
+  {
+    q: "What's the cancellation policy?",
+    a: "We require 24 hours' notice for cancellations. This helps us manage group sizes and keep the experience safe for every dog."
+  },
+  {
+    q: "What training tools do you use in Day & Train?",
+    a: "We use prong collars, e-collars, slip leads, and muzzles as needed. The e-collar delivers TENS unit-type muscle stimulation — the same technology used by chiropractors — not a shock. These tools are used to establish clear communication and reliable responses in real-world situations."
+  },
+  {
+    q: "Can I tour the facility before enrolling?",
+    a: "Yes! We're happy to show you around. Just mention it during your phone assessment and we'll set up a time for you to visit and see the facility in person."
+  },
+  {
+    q: "Do you offer pickup or drop-off transport?",
+    a: "Not at this time. We're located at 22 Cardico Dr in Gormley, ON with easy parking on site."
+  },
+];
 ---
 
 <section id="faq" class="py-20 sm:py-24 bg-neutral-50">
@@ -9,107 +67,26 @@
       <h2 class="text-3xl sm:text-4xl font-black text-brand-charcoal mb-4">
         Questions Before You Book
       </h2>
+      <p class="text-lg text-neutral-500 max-w-2xl mx-auto">
+        Everything you need to know. If your question isn't here, call us at <a href="tel:4377769563" class="text-academy-teal font-semibold hover:underline">437-776-9563</a>.
+      </p>
     </div>
 
     <!-- FAQ Items -->
-    <div class="space-y-4">
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">What are the requirements for enrollment?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          Dogs must be at least 16 weeks old with current rabies, bordetella, and DHPP vaccinations. Spay/neuter is strongly recommended. No lengthy assessment process — we have 15 years of experience and can handle any dog.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">Can intact (unspayed/unneutered) dogs attend?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          Spay/neuter is strongly recommended but not required. However, intact males over 1 year struggle significantly in group daycare — they tend to become territorial, mark obsessively, and fixate on females. We recommend our Day & Train program for intact dogs where they receive individualized management.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">How do you keep dogs safe at your facility?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          Safety is built into everything we do. Our staff are highly skilled at reading body language and managing group dynamics — dogs have fun but strongly respect the rules here. In 15 years of socializing dogs of every breed and temperament, we have maintained a perfect safety record with zero incidents. It's why we're trusted as the safest daycare in the GTA.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">My dog is nervous around other dogs — can they still attend?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          Absolutely. We specialize in working with nervous dogs. Our staff carefully match them with compatible, calm playmates and manage the introduction process. For nervous dogs, we recommend attending 3–5 days per week during the first few months for consistent exposure and faster confidence building.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">What if my dog gets injured?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          All of our staff are trained and equipped to provide first aid. We also maintain direct contact with nearby emergency veterinary clinics and can respond quickly if a situation ever requires it.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">What training tools do you use?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          For our Day & Train program, we use prong collars, e-collars, slip leads, and muzzles as needed. The e-collar delivers TENS unit-type muscle stimulation — the same technology used by chiropractors — not a shock. These tools are used to establish clear communication and reliable responses in real-world situations.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">Can I tour the facility before enrolling?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          We do not currently offer in-person facility tours, as they can be disruptive to the dogs in our care. However, we are working on a virtual tour that will be available soon. In the meantime, you can see our facility through photos on our website and Instagram.
-        </div>
-      </details>
-
-      <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
-        <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
-          <span class="text-base font-semibold text-brand-charcoal pr-4">What are your hours and how often should my dog attend?</span>
-          <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
-          </svg>
-        </summary>
-        <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
-          We are open Monday through Friday. Drop-off is 7:00–10:00 AM, pickup is 3:00–8:00 PM. For best results we recommend 3–5 days per week for at least the first few months.
-        </div>
-      </details>
-
+    <div class="space-y-3">
+      {faqs.map((faq) => (
+        <details class="group bg-white rounded-xl border border-neutral-200 overflow-hidden">
+          <summary class="flex items-center justify-between cursor-pointer p-6 hover:bg-neutral-50 transition-colors">
+            <span class="text-base font-semibold text-brand-charcoal pr-4">{faq.q}</span>
+            <svg class="w-5 h-5 text-neutral-400 group-open:rotate-180 transition-transform flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </summary>
+          <div class="px-6 pb-6 text-neutral-600 leading-relaxed">
+            {faq.a}
+          </div>
+        </details>
+      ))}
     </div>
   </div>
 </section>

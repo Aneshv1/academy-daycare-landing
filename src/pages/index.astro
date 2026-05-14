@@ -4,7 +4,10 @@ import Navbar from '../components/Navbar.astro';
 import Hero from '../components/Hero.astro';
 import PainSection from '../components/PainSection.astro';
 import Programs from '../components/Programs.astro';
+import HowItWorks from '../components/HowItWorks.astro';
 import Testimonials from '../components/Testimonials.astro';
+import Guarantee from '../components/Guarantee.astro';
+import FAQ from '../components/FAQ.astro';
 import CTA from '../components/CTA.astro';
 import ContactForm from '../components/ContactForm.astro';
 import Footer from '../components/Footer.astro';
@@ -15,33 +18,95 @@ import Footer from '../components/Footer.astro';
   <Hero />
   <PainSection />
   <Programs />
-  <Testimonials />
 
-  <!-- Curriculum Download — slim lead capture -->
-  <section class="py-12 sm:py-16 bg-brand-dark">
+  <!-- Curriculum Preview + Download -->
+  <section class="py-16 sm:py-20 bg-white">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col md:flex-row items-center gap-6 md:gap-8 bg-brand-charcoal rounded-2xl p-6 sm:p-8 border border-white/5">
-        <div class="flex-1 text-center md:text-left">
-          <h3 class="text-lg font-bold text-white mb-1">Download Our Full Curriculum</h3>
-          <p class="text-sm text-neutral-400">Daily schedules, activities, add-ons, and what to bring on day one — sent to your inbox.</p>
+      <div class="text-center mb-8">
+        <span class="inline-block text-academy-teal text-sm font-semibold uppercase tracking-wider mb-3">Our Curriculum</span>
+        <h2 class="text-2xl sm:text-3xl font-black text-brand-charcoal">See What a Day Looks Like</h2>
+      </div>
+
+      <!-- Curriculum preview with fade -->
+      <div class="relative mb-8">
+        <div class="bg-neutral-50 rounded-2xl border border-neutral-200 p-6 sm:p-8">
+          <!-- Mock curriculum content -->
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-academy-teal/10 rounded-lg flex items-center justify-center">
+              <svg class="w-5 h-5 text-academy-teal" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-brand-charcoal">Academy Daycare — Daily Curriculum</p>
+              <p class="text-xs text-neutral-400">Full day schedule, activities & add-ons</p>
+            </div>
+          </div>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex items-start gap-3">
+              <span class="text-academy-teal font-semibold whitespace-nowrap w-24 flex-shrink-0">7:00–10:00</span>
+              <div>
+                <p class="font-semibold text-brand-charcoal">Drop-off & Check-in</p>
+                <p class="text-neutral-500">Health check, settle into matched play group</p>
+              </div>
+            </div>
+            <div class="border-t border-neutral-200"></div>
+            <div class="flex items-start gap-3">
+              <span class="text-academy-teal font-semibold whitespace-nowrap w-24 flex-shrink-0">10:00</span>
+              <div>
+                <p class="font-semibold text-brand-charcoal">Morning Free Play</p>
+                <p class="text-neutral-500">Structured play with temperament-matched groups</p>
+              </div>
+            </div>
+            <div class="border-t border-neutral-200"></div>
+            <div class="flex items-start gap-3">
+              <span class="text-academy-teal font-semibold whitespace-nowrap w-24 flex-shrink-0">11:00</span>
+              <div>
+                <p class="font-semibold text-brand-charcoal">Outdoor Yard Time</p>
+                <p class="text-neutral-500">Fresh air, potty break, supervised exercise</p>
+              </div>
+            </div>
+            <div class="border-t border-neutral-200"></div>
+            <div class="flex items-start gap-3 opacity-60">
+              <span class="text-academy-teal font-semibold whitespace-nowrap w-24 flex-shrink-0">12:00</span>
+              <div>
+                <p class="font-semibold text-brand-charcoal">Lunch & Rest Period</p>
+                <p class="text-neutral-500">90-minute mandatory rest for safe digestion...</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <form id="homepage-curriculum-form" class="flex flex-col sm:flex-row gap-3 w-full md:w-auto">
+
+        <!-- Fade overlay -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/90 to-transparent rounded-b-2xl pointer-events-none"></div>
+      </div>
+
+      <!-- Download form -->
+      <div class="bg-neutral-50 rounded-2xl p-6 sm:p-8 border border-neutral-200 text-center">
+        <p class="text-base font-bold text-brand-charcoal mb-1">Get the full curriculum</p>
+        <p class="text-sm text-neutral-500 mb-4">Afternoon schedule, add-ons, pricing & what to bring on day one.</p>
+        <form id="homepage-curriculum-form" class="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
           <input type="text" name="name" required placeholder="Name"
-            class="px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm w-full sm:w-36" />
+            class="px-4 py-3 bg-white border border-neutral-300 rounded-lg text-brand-charcoal placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm flex-1" />
           <input type="email" name="email" required placeholder="Email"
-            class="px-4 py-3 bg-neutral-800 border border-neutral-700 rounded-lg text-white placeholder-neutral-500 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm w-full sm:w-44" />
+            class="px-4 py-3 bg-white border border-neutral-300 rounded-lg text-brand-charcoal placeholder-neutral-400 focus:outline-none focus:ring-2 focus:ring-academy-teal focus:border-transparent text-sm flex-1" />
           <button type="submit" id="homepage-curriculum-btn"
             class="px-6 py-3 bg-academy-teal text-white text-sm font-bold rounded-lg hover:bg-academy-teal-dark transition-all whitespace-nowrap">
             Send It
           </button>
         </form>
-        <div id="homepage-curriculum-success" class="hidden text-center md:text-left">
+        <div id="homepage-curriculum-success" class="hidden">
           <p class="text-academy-teal font-semibold text-sm">Check your inbox!</p>
         </div>
       </div>
     </div>
   </section>
 
+  <HowItWorks />
+  <Testimonials />
+  <Guarantee />
+  <FAQ />
   <CTA />
   <ContactForm />
   <Footer />
