@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/inter';
+
 interface Props {
   title: string;
   description?: string;
@@ -118,6 +120,7 @@ const faqJsonLd = {
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Academy Daycare" />
+    <meta property="og:locale" content="en_CA" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -125,10 +128,8 @@ const faqJsonLd = {
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <!-- Hero image preload -->
+    <link rel="preload" as="image" href="/hero.jpg" fetchpriority="high" />
     <title>{title}</title>
 
     <!-- JSON-LD: LocalBusiness -->
